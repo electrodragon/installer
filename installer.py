@@ -550,6 +550,13 @@ ytmpv_script = {
     'rMTD':ytmpv_inst_cmds,'cMTD':False,'uMTD':False,
     'rCMDs':False,'cCMDs':False,'uCMDs':['rm /home/'+username+'/s/bin/ytmpv']}
 
+# scrcpy
+scrcpy_script = {
+    'pINFO':{'name':'scrcpy','rcu':'r','iCONF':False,'eMSG':False},
+    'rMTD':False,'cMTD':False,'uMTD':False,'cCMDs':False,'uCMDs':False,
+    'rCMDs':["mkdir -p /home/"+username+"/__JUNKY_SCRCPY","cd /home/"+username+"/__JUNKY_SCRCPY && git clone 'https://aur.archlinux.org/scrcpy.git",
+     "cd /home/"+username+"/__JUNKY_SCRCPY/scrcpy && makepkg -Acs PKGBUILD && sudo pacman -U ./*.pkg.tar*","rm -rf /home/"+username+"/__JUNKY_SCRCPY"]}
+
 """
 script = {
     'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
@@ -584,6 +591,7 @@ softwares.append(robo3T_script)
 softwares.append(xclip_script)
 softwares.append(ydl_script)
 softwares.append(ytmpv_script)
+softwares.append(scrcpy_script)
 
 a = 1
 for software in softwares:
