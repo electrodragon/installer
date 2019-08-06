@@ -557,6 +557,18 @@ scrcpy_script = {
     'rCMDs':['mkdir -p /home/'+username+'/__JUNKY_SCRCPY','cd /home/'+username+'/__JUNKY_SCRCPY && git clone \'https://aur.archlinux.org/scrcpy.git\'',
              'cd /home/'+username+'/__JUNKY_SCRCPY/scrcpy && makepkg -Acs PKGBUILD && sudo pacman -U ./*.pkg.tar*','rm -rf /home/'+username+'/__JUNKY_SCRCPY']}
 
+# HANDBRAKE
+handbrake_gui_script = {
+    'pINFO':{'name':'ghb','rcu':'ru','iCONF':False,'eMSG':False},
+    'rMTD':False,'cMTD':False,'uMTD':False,
+    'rCMDs':['sudo pacman -S handbrake'],'cCMDs':False,'uCMDs':['sudo pacman -R handbrake']
+    }
+handbrake_cli_script = {
+    'pINFO':{'name':'HandBrakeCLI','rcu':'ru','iCONF':False,'eMSG':False},
+    'rMTD':False,'cMTD':False,'uMTD':False,
+    'rCMDs':['sudo pacman -S handbrake-cli'],'cCMDs':False,'uCMDs':['sudo pacman -R handbrake-cli']
+    }
+
 """
 script = {
     'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
@@ -592,6 +604,8 @@ softwares.append(xclip_script)
 softwares.append(ydl_script)
 softwares.append(ytmpv_script)
 softwares.append(scrcpy_script)
+softwares.append(handbrake_gui_script)
+softwares.append(handbrake_cli_script)
 
 a = 1
 for software in softwares:
