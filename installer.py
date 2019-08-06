@@ -552,8 +552,8 @@ ytmpv_script = {
 
 # scrcpy
 scrcpy_script = {
-    'pINFO':{'name':'scrcpy','rcu':'r','iCONF':False,'eMSG':False},
-    'rMTD':False,'cMTD':False,'uMTD':False,'cCMDs':False,'uCMDs':False,
+    'pINFO':{'name':'scrcpy','rcu':'ru','iCONF':False,'eMSG':False},
+    'rMTD':False,'cMTD':False,'uMTD':False,'cCMDs':False,'uCMDs':['sudo pacman -R scrcpy'],
     'rCMDs':['mkdir -p /home/'+username+'/__JUNKY_SCRCPY','cd /home/'+username+'/__JUNKY_SCRCPY && git clone \'https://aur.archlinux.org/scrcpy.git\'',
              'cd /home/'+username+'/__JUNKY_SCRCPY/scrcpy && makepkg -Acs PKGBUILD && sudo pacman -U ./*.pkg.tar*','rm -rf /home/'+username+'/__JUNKY_SCRCPY']}
 
