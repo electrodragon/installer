@@ -569,6 +569,12 @@ handbrake_cli_script = {
     'rCMDs':['sudo pacman -S handbrake-cli'],'cCMDs':False,'uCMDs':['sudo pacman -R handbrake-cli']
     }
 
+# Virtual Box
+vbox_script = {
+    'pINFO':{'name':'virtualbox','rcu':'r','iCONF':False,'eMSG':"\n :: Restart Your System !"},'rMTD':False,'cMTD':False,'uMTD':False,
+    'rCMDs':['pamac install virtualbox $(pacman -Qsq "^linux" | grep "^linux[0-9]*[-rt]*$" | awk \'{print $1"-virtualbox-host-modules"}\' ORS=\' \')',
+    'sudo vboxreload','pamac build virtualbox-ext-oracle','sudo gpasswd -a $USER vboxusers'],'cCMDs':False,'uCMDs':False}
+
 """
 script = {
     'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
@@ -606,6 +612,7 @@ softwares.append(ytmpv_script)
 softwares.append(scrcpy_script)
 softwares.append(handbrake_gui_script)
 softwares.append(handbrake_cli_script)
+softwares.append(vbox_script)
 
 a = 1
 for software in softwares:
