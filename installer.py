@@ -2,14 +2,6 @@
 import os, subprocess
 username = subprocess.run(['whoami'], stdout=subprocess.PIPE).stdout.decode('utf-8').replace('\n','')
 
-"""
-script = {
-    'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
-    'rMTD':False,'cMTD':False,'uMTD':False,
-    'rCMDs':False,'cCMDs':False,'uCMDs':False
-    }
-"""
-
 def is_installed(prog):
     path = subprocess.run(['which',prog], stderr=subprocess.PIPE, stdout=subprocess.PIPE).stdout.decode('utf-8').replace('\n','')
     return [True,path] if path != '' else False
@@ -575,6 +567,29 @@ vbox_script = {
     'rCMDs':['pamac install virtualbox $(pacman -Qsq "^linux" | grep "^linux[0-9]*[-rt]*$" | awk \'{print $1"-virtualbox-host-modules"}\' ORS=\' \')',
     'sudo vboxreload','pamac build virtualbox-ext-oracle','sudo gpasswd -a $USER vboxusers'],'cCMDs':False,'uCMDs':False}
 
+# OpenSSH
+def openssh_configure():
+    print("\n :: SSH STATUS !\n")
+    os.system('sudo systemctl status sshd | grep \'Active:\'')
+    a = input("\n :: [s]tart, [e]nable, s[t]op, [d]isable : ")
+    if a == 's': os.system('sudo systemctl start sshd')
+    elif a == 'e': os.system('sudo systemctl enable sshd')
+    elif a == 't': os.system('sudo systemctl stop sshd')
+    elif a == 'd': os.system('sudo systemctl disable sshd')
+    else:
+        print("\n :: Wrong Input !")
+        quit()
+    os.system('sudo systemctl status sshd | grep \'Active:\'')
+    print("\n :: IP\n")
+    os.system('ip a | grep -i \'inet 192\'')
+    print("\n :: More: https://linuxhint.com/arch_linux_ssh_server")
+
+openssh_script = {
+    'pINFO':{'name':'sshd','rcu':'rc','iCONF':True,'eMSG':False},
+    'rMTD':False,'cMTD':openssh_configure,'uMTD':False,
+    'rCMDs':['sudo pacman -S openssh'],'cCMDs':False,'uCMDs':False
+    }
+
 """
 script = {
     'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
@@ -613,6 +628,7 @@ softwares.append(scrcpy_script)
 softwares.append(handbrake_gui_script)
 softwares.append(handbrake_cli_script)
 softwares.append(vbox_script)
+softwares.append(openssh_script)
 
 a = 1
 for software in softwares:
