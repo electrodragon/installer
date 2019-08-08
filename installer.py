@@ -590,6 +590,13 @@ openssh_script = {
     'rCMDs':['sudo pacman -S openssh'],'cCMDs':False,'uCMDs':False
     }
 
+# BitTorrent
+bittorrent_script = {
+    'pINFO':{'name':'qbittorrent','rcu':'ru','iCONF':False,'eMSG':False},
+    'rMTD':False,'cMTD':False,'uMTD':False,
+    'rCMDs':['sudo pacman -S qbittorrent'],'cCMDs':False,'uCMDs':['sudo pacman -R qbittorrent']
+    }
+
 """
 script = {
     'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
@@ -629,6 +636,7 @@ softwares.append(handbrake_gui_script)
 softwares.append(handbrake_cli_script)
 softwares.append(vbox_script)
 softwares.append(openssh_script)
+softwares.append(bittorrent_script)
 
 a = 1
 for software in softwares:
