@@ -597,6 +597,21 @@ bittorrent_script = {
     'rCMDs':['sudo pacman -S qbittorrent'],'cCMDs':False,'uCMDs':['sudo pacman -R qbittorrent']
     }
 
+#Splay
+def splay_inst_cmds():
+    os.system("mkdir -p /home/"+username+"/s/bin")
+    os.system("rm -rf /home/"+username+"/s/bin/splay")
+    os.system("cd /home/"+username+"/s/bin && git clone https://github.com/electrodragon/splay.git")
+    os.system("mv /home/"+username+"/s/bin/splay /home/"+username+"/s/bin/splaydir")
+    os.system("mv /home/"+username+"/s/bin/splaydir/splay /home/"+username+"/s/bin/ && rm -rf /home/"+username+"/s/bin/splaydir")
+    s_Modules_initializer()
+
+splay_script = {
+    'pINFO':{'name':'splay','rcu':'ru','iCONF':False,'eMSG':False},
+    'rMTD':splay_inst_cmds,'cMTD':False,'uMTD':False,
+    'rCMDs':False,'cCMDs':False,'uCMDs':["rm -rf /home/"+username+"/s/bin/splay"]
+    }
+
 """
 script = {
     'pINFO':{'name':'name','rcu':'rcu','iCONF':False,'eMSG':False},
@@ -637,6 +652,7 @@ softwares.append(handbrake_cli_script)
 softwares.append(vbox_script)
 softwares.append(openssh_script)
 softwares.append(bittorrent_script)
+softwares.append(splay_script)
 
 a = 1
 for software in softwares:
