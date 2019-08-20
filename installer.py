@@ -612,19 +612,20 @@ splay_script = {
     'rCMDs':False,'cCMDs':False,'uCMDs':["rm -rf /home/"+username+"/s/bin/splay"]
     }
 
-#edrec
-def edrec_inst_cmds():
+#Vmaster
+def vmaster_inst_cmds():
     os.system("mkdir -p /home/"+username+"/s/bin")
-    os.system("rm -rf /home/"+username+"/s/bin/edrec")
-    os.system("cd /home/"+username+"/s/bin && git clone https://github.com/electrodragon/edrec.git")
-    os.system("mv /home/"+username+"/s/bin/edrec /home/"+username+"/s/bin/edrecdir")
-    os.system("mv /home/"+username+"/s/bin/edrecdir/edrec /home/"+username+"/s/bin/ && rm -rf /home/"+username+"/s/bin/edrecdir")
+    os.system("mkdir -p /home/"+username+"/s/MY_OPT")
+    os.system("rm -rf /home/"+username+"/s/bin/vmaster")
+    os.system("rm -rf /home/"+username+"/s/MY_OPT/vmaster")
+    os.system("cd /home/"+username+"/s/MY_OPT && git clone https://github.com/electrodragon/vmaster.git")
+    os.system("cd /home/"+username+"/s/bin && ln -sf /home/"+username+"/s/MY_OPT/vmaster/vmaster vmaster")
     s_Modules_initializer()
 
-edrec_script = {
-    'pINFO':{'name':'edrec','rcu':'ru','iCONF':False,'eMSG':False},
-    'rMTD':edrec_inst_cmds,'cMTD':False,'uMTD':False,
-    'rCMDs':False,'cCMDs':False,'uCMDs':["rm -rf /home/"+username+"/s/bin/edrec"]
+vmaster_script = {
+    'pINFO':{'name':'vmaster','rcu':'ru','iCONF':False,'eMSG':False},
+    'rMTD':vmaster_inst_cmds,'cMTD':False,'uMTD':False,
+    'rCMDs':False,'cCMDs':False,'uCMDs':['rm -rf /home/'+username+'/s/bin/vmaster','rm -rf /home/'+username+'/s/MY_OPT/vmaster']
     }
 
 """
@@ -668,7 +669,7 @@ softwares.append(vbox_script)
 softwares.append(openssh_script)
 softwares.append(bittorrent_script)
 softwares.append(splay_script)
-softwares.append(edrec_script)
+softwares.append(vmaster_script)
 
 a = 1
 for software in softwares:
