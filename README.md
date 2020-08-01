@@ -1,7 +1,7 @@
 # Ultimate Installer
 
 * [mpv](#mpv) - Command line video player
-* [youtube-dl](#youtube-dl) - Command-line program to download videos from [YouTube](YouTube.com) and other video sites
+* [youtube-dl](#youtube-dl) - Command-line program to download videos from [YouTube](http://www.youtube.com) and other video sites
 * [xampp](#xampp) - Most popular PHP development environment
 * [git](#git) - Version control system
 * [emacs](#emacs) - An extensible, customizable, free/libre text editor and more
@@ -44,7 +44,7 @@ sudo pacman -R mpv && rm -rf "$HOME/.config/mpv"
 ```
 ### Enable some useful key bindings
 ```sh
-echo -e "# mpv keybindings\n\n## Seek units are in seconds\nh seek 5\ng seek -5\ny seek 30\nb seek -30\n\n# Move video rectangle\nAlt+right add video-pan-x 0.1\nAlt+h add video-pan-x 0.1\nAlt+left add video-pan-x -0.1\nAlt+g add video-pan-x -0.1\nAlt+down add video-pan-x 0.1\nAlt+b add video-pan-x 0.1\nAlt+up add video-pan-x -0.1\nAlt+y add video-pan-x -0.1" > "$HOME/.config/mpv/input.conf"
+curl 'https://pastebin.com/chsBd5s1' | grep -A 17 class=\"textarea\" | cut -d'>' -f2 | head -16 > "$HOME/.config/mpv/input.conf"
 ```
 ## [youtube-dl](#youtube-dl)
 ### Installation
@@ -59,5 +59,5 @@ sudo rm /usr/local/bin/youtube-dl
 
 ## [XAMPP](#xampp)
 ```sh
-wget https://www.apachefriends.org/xampp-files/7.4.8/xampp-linux-x64-7.4.8-0-installer.run && ./xampp-linux-x64-7.4.8-0-installer.run
+curl 'https://www.apachefriends.org/download.html' 2>/dev/null | grep '.run"' | cut -d\" -f8 | tail -1 | xargs wget && bash ./xampp*.run
 ```
