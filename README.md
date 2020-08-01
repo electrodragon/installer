@@ -35,6 +35,29 @@
 
 ## [mpv](#mpv)
 ### Installation
-```bash
+```sh
 sudo pacman -S mpv
+```
+### Uninstall
+```sh
+sudo pacman -R mpv && rm -rf "$HOME/.config/mpv"
+```
+### Enable some useful key bindings
+```sh
+echo -e "# mpv keybindings\n\n## Seek units are in seconds\nh seek 5\ng seek -5\ny seek 30\nb seek -30\n\n# Move video rectangle\nAlt+right add video-pan-x 0.1\nAlt+h add video-pan-x 0.1\nAlt+left add video-pan-x -0.1\nAlt+g add video-pan-x -0.1\nAlt+down add video-pan-x 0.1\nAlt+b add video-pan-x 0.1\nAlt+up add video-pan-x -0.1\nAlt+y add video-pan-x -0.1" > "$HOME/.config/mpv/input.conf"
+```
+## [youtube-dl](#youtube-dl)
+### Installation
+```sh
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+```
+### Uninstall
+```sh
+sudo rm /usr/local/bin/youtube-dl
+```
+
+## [XAMPP](#xampp)
+```sh
+wget https://www.apachefriends.org/xampp-files/7.4.8/xampp-linux-x64-7.4.8-0-installer.run && ./xampp-linux-x64-7.4.8-0-installer.run
 ```
